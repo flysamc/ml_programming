@@ -52,11 +52,8 @@ error_val   = zeros(m, 1);
 %
 
 % ---------------------- Sample Solution ----------------------
-%theta = [1 ; 1];
 for i=1:m
-   error_train(i) = linearRegCostFuntion([ones(i, 1) X(1:i, :)], y(1:i), theta, 0);
-   error_val(i)   = linearRegCostFuntion([ones(i, 1) Xval(1:i, :)], yval(1:i), theta, 0);
-end
+    error_train(i) = linearRegCostFuntion([ones(m, 1) X(1:i, :)], y(1:i), theta, 0)
 
 
 

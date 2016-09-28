@@ -28,12 +28,10 @@ J2 = (lambda/(2*m))*sum(temp);
 
 J = J1 + J2;
 
-[r,s] = size(theta);
-grad(1) = (1/m)*sum(((X*theta -y)')*X(:,1));
 
-for j=2:r
-    grad(j) = (1/m)*sum(((X*theta -y)')*X(:,j)) + (lambda/m)*theta(j); 
-end
+grad(1) = (1/m)*sum(((X*theta -y)').*X(:,1));
+
+
 
 
 
