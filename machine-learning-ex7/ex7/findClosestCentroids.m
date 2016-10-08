@@ -20,7 +20,21 @@ idx = zeros(size(X,1), 1);
 %
 % Note: You can use a for-loop over the examples to compute this.
 %
+[m,n] = size(X);
 
+
+
+for i=1:m
+    comp = inf;
+    for j=1:K
+        temp = (norm(X(i,:)- centroids(j,:)));
+        if (temp<comp)
+            comp = temp;
+            idx(i) = j;
+        end
+    end
+end
+        
 
 
 
