@@ -39,8 +39,29 @@ Theta_grad = zeros(size(Theta));
 %        Theta_grad - num_users x num_features matrix, containing the 
 %                     partial derivatives w.r.t. to each element of Theta
 %
+%calculating cost 
+Hr = X*Theta';
+Jt = (Hr(R==1) - Y(R==1)).^2;
+J = (1/2)*(sum(Jt));
+%%%%%%%%%%%%%%%%%%%%
+%calculating gradient
+X_grad = (((Hr-Y).*R)*Theta);
+Theta_grad = (((Hr-Y).*R)'*X);
+[n,c] = size(Theta); 
+for i=1:n
+    Thetak(i) = sum(Theta(i,:).^2);
+end
+[m,e] = size(X);
+for i=1:m
+    Xk(i) = sum(X(i,:).^2);
+end
+Thetaf = sum(Thetak);
+Xf = sum(Xk);
+J = J + (lambda/2)*(Xf + Thetaf);
 
 
+X_grad = X_grad + lambda*X;
+Theta_grad = Theta_grad+ lambda*Theta;
 
 
 
